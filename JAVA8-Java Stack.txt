@@ -1,0 +1,55 @@
+import java.util.*;
+class Solution{
+	public boolean balanceparen(String exp)
+    {
+        Stack<Character> stack=new Stack<Character>();
+        for(int i=0;i<exp.length();i++)
+        {
+            char el=exp.charAt(i);
+            if(el=='[' || el=='{' || el=='(')
+            {
+                stack.push(el);
+                continue;
+            }
+            if(stack.isEmpty())
+            return false;
+            switch(el){
+                case '}':
+                stack.pop();
+                if(el=='[' || el=='(')
+                return false;
+                break;
+                case ')':
+                stack.pop();
+                if(el=='{' || el=='[')
+                return false;
+                break;
+                case ']':
+                stack.pop();
+                if(el=='(' || el=='{')
+                return false;
+                break;
+            }
+           
+        }
+ return (stack.isEmpty());
+    }
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		//Stack<String> stack=new Stack<>();
+		Solution s=new Solution();
+        boolean bo;
+        while (sc.hasNext()) {
+			String input=sc.next();
+            //Complete the code
+        bo=s.balanceparen(input);
+        System.out.println(bo);
+		}
+        
+		
+	}
+}
+
+
+
