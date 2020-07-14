@@ -1,0 +1,17 @@
+import java.io.*;
+import java.util.*;
+import java.security.*;
+
+public class Solution {
+
+    public static void main(String[] args) throws NoSuchAlgorithmException,UnsupportedEncodingException{
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc= new Scanner(System.in);
+        String s= sc.nextLine();
+        MessageDigest msg= MessageDigest.getInstance("SHA-256");
+        byte[] val = msg.digest(s.getBytes());
+        //String res= Arrays.toString(val);
+        for(byte b:val)
+        System.out.printf("%02x",b);
+    }
+}
